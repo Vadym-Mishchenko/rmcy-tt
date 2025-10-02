@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { formatDate } from "../utils";
 import type { Todo } from "../types";
 
@@ -9,11 +10,7 @@ interface IProps {
 
 export const TodoItem = ({ todo, onToggle, onDelete }: IProps) => {
   return (
-    <li
-      className={`list-group-item-action list-group-item d-flex align-items-center justify-content-between ${
-        todo.done ? "bg-light" : ""
-      }`}
-    >
+    <div className="d-flex align-items-center justify-content-between w-100">
       <div className="d-flex align-items-center gap-2 flex-grow-1">
         <input
           type="checkbox"
@@ -29,19 +26,21 @@ export const TodoItem = ({ todo, onToggle, onDelete }: IProps) => {
       </div>
 
       <div
-        className="d-flex align-items-center justify-content-end gap-3"
-        style={{ minWidth: "160px", flexShrink: 0 }}
+        className="d-flex align-items-center gap-3 flex-shrink-0 text-end"
+        style={{ minWidth: "170px" }}
       >
         <small className="text-muted text-nowrap">
           {formatDate(new Date(todo.createdAt))}
         </small>
-        <button
-          className="btn btn-warning btn-sm flex-shrink-0"
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="btn btn-warning btn-sm"
           onClick={() => onDelete(todo.id)}
         >
           <i className="bi bi-trash" />
-        </button>
+        </motion.button>
       </div>
-    </li>
+    </div>
   );
 };

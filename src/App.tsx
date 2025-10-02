@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { motion } from "framer-motion";
 import { TodoForm, TodoList } from "./components";
 import { useLocalStorage } from "./hooks";
 import { STORAGE_KEY } from "./config";
@@ -30,7 +31,13 @@ const App = () => {
     setTodos((prev) => prev.filter((t) => t.id !== id));
 
   return (
-    <div className="container py-5" style={{ maxWidth: 640 }}>
+    <motion.div
+      className="container py-5"
+      style={{ maxWidth: 640 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, ease: "easeIn" }}
+    >
       <h2 className="mb-4 text-center">Todolist App</h2>
       <TodoForm onAdd={handleAdd} />
 
@@ -44,7 +51,7 @@ const App = () => {
 
       {doneTodos.length > 0 && <h3 className="mt-4">Done</h3>}
       <TodoList todos={doneTodos} onToggle={toggleTodo} onDelete={removeTodo} />
-    </div>
+    </motion.div>
   );
 };
 
