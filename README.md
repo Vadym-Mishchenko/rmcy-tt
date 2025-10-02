@@ -5,6 +5,13 @@ Supports adding, deleting, validating, marking as done/undone, and persisting ta
 
 ---
 
+## 🚀 Live Demo
+
+The project is deployed on GitHub Pages and available here:  
+👉 [https://Vadym-Mishchenko.github.io/rmcy-tt/](https://Vadym-Mishchenko.github.io/rmcy-tt/)
+
+---
+
 ## 🚀 Tech Stack
 
 - **React 18 + TypeScript**
